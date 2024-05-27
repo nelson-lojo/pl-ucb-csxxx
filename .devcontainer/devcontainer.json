@@ -3,29 +3,16 @@
 {
 	"name": "Launch Course",
 
-    // This roundabout way of using `mcr.microsoft.com/devcontainers/universal`
-    //   is for letting docker desktop pull/build/launch the image correctly
-    //   on non-amd machines through virtualization.
     "dockerComposeFile": [ "docker-compose.yml" ],
     "service" : "devcontainer",
     "workspaceFolder": "/workspaces/pl-ucb-csxxx",
-	// "build": {
-	// 	"options": [
-	// 		"--platform", "linux/amd64" // enables usage on M1 Macs
-	// 	]
-	// },
-
-    // "runArgs": [
-    //     "--platform", "linux/amd64" // enables usage on M1 Macs
-    // ],
+	
+    "forwardPorts": [ 3000 ],
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	"features": {
         "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
     },
 
-    // Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "uname -a",
-    // "postAttachCommand" : "docker compose --file launch_pl.yaml up",
     "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
 }
